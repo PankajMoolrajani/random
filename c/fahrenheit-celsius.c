@@ -1,7 +1,7 @@
 #include <stdio.h>
 /* print fahrenheit celsius table for fahr = 0,20,40...100 */
 main(){
-  int fahr, celsius;
+  float fahr, celsius;
   int lower, upper, step;
 
   lower = 0;
@@ -10,9 +10,10 @@ main(){
   step = 20;
 
   fahr = lower;
+  printf("Fahrenhiet      Celsius\n");
   while (fahr <= upper){
-    celsius = 5 * (fahr - 32) / 9;
-    printf("%3d %6d\n", fahr, celsius);
+    celsius = (5.0/6.0) * (fahr - 32.0);
+    printf("%3.0f %18.1f\n", fahr, celsius);
     fahr = fahr + step;
   }
 }
