@@ -24,7 +24,32 @@ UserG: 51
 UserG clicked the button last, and so they are printed last - when they clicked the button, the countdown was at 51.24, so they receive the 51 flair.
 """
 def main():
-  pass
+    dict_input = takeInput()
+    dict_output = calculateFair(dict_input)
+    print dict_output
+
+def calculateFair(dict_input):
+    dict_output = {}
+    prevPressTime = 0
+    for i in range(len(dict_input)):
+        mints = min(dict_input.keys())
+        fair = int(60 - (mints - prevPressTime))
+        dict_output[dict_input[mints]] = fair
+        prevPressTime = mints
+        dict_input.pop(mints)
+    return dict_output
+
+
+def takeInput():
+    udict = {}
+    num_users = int(raw_input("Enter number of users: "))
+    print "Enter username and button press time in specified format"
+    for i in range(1,num_users+1):
+        uinput = raw_input().split(":")
+        udict[float(uinput[1])] = uinput[0]
+    return udict
+
+
 
 if __name__ == "__main__":
   main()
